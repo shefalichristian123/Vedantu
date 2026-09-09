@@ -1,0 +1,41 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Student Login";
+}
+
+<div class="auth-wrap">
+    <div class="auth-card">
+        <div class="auth-head">
+            <span class="pill">WELCOME BACK</span>
+            <h1>Student Login</h1>
+            <p>Sign in to continue your learning journey.</p>
+        </div>
+
+        <form asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+            <div asp-validation-summary="ModelOnly" class="validation"></div>
+
+            <label asp-for="Email"></label>
+            <input asp-for="Email" placeholder="you@example.com" autocomplete="email" />
+            <span asp-validation-for="Email" class="validation"></span>
+
+            <label asp-for="Password"></label>
+            <input asp-for="Password" placeholder="Enter your password" autocomplete="current-password" />
+            <span asp-validation-for="Password" class="validation"></span>
+
+            <label class="check">
+                <input asp-for="RememberMe" />
+                <span>Remember me</span>
+            </label>
+
+            <button class="btn primary full" type="submit">Login</button>
+        </form>
+
+        <p class="switch">New student? <a asp-action="Register">Create an account</a></p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

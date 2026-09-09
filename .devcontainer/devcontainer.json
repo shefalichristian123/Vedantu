@@ -1,0 +1,23 @@
+{
+  "name": "Vedantu ASP.NET Core",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
+  "forwardPorts": [5080, 7080],
+  "portsAttributes": {
+    "5080": {
+      "label": "Vedantu HTTP",
+      "onAutoForward": "openBrowser"
+    },
+    "7080": {
+      "label": "Vedantu HTTPS"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csdevkit"
+      ]
+    }
+  },
+  "postCreateCommand": "dotnet restore",
+  "postStartCommand": "dotnet build"
+}
